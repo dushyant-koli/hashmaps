@@ -1,0 +1,83 @@
+//hashmaps
+// map stl
+#include <iostream>
+#include <map>
+#include <unordered_map>
+using namespace std;
+
+int main()
+{
+
+    // craete unordered map
+    unordered_map<string, int> m; // prints in random order
+
+    // map<string, int> m; // ordered prints keys in order after commentout unordered map
+
+    // insertion
+    // phle make pair
+    pair<string, int> p = make_pair("babbar", 3); // babar ke corrseponding value 3 chciye
+    // insert pair in map
+    m.insert(p);
+
+    // 2 way to insert
+    pair<string, int> pair2("love", 2);
+    m.insert(pair2);
+
+    // 3 way to insert
+    m["mera"] = 1;
+
+    // what will happen
+    m["mera"] = 2;
+
+    // search
+    // kiske key ke corresponding konsi value
+    cout << m["mera"] << endl;
+
+    // way 2 to srch
+    cout << m.at("babbar") << endl;
+
+    // cout << m.at("unknownkey") << endl; //
+
+    // pvs line se diff. h
+    // jo key humne nhi banayi thi isway se uski entry 0
+    cout << m["unknownkey"] << endl; // commentout pvs n run this
+
+    // but m.at below m[] both will give entry 0
+    cout << m["unknownkey"] << endl;
+    cout << m.at("unknownkey") << endl;
+
+    // size
+    cout << m.size() << endl; // equal to no. of entry created
+
+    // to check key present or not
+    cout << m.count("bro") << endl; // 0 if not present
+    cout << m.count("babbar") << endl;
+
+    // erase
+    m.erase("babbar"); // donot use endl
+
+    // print size after erase
+    cout << m.size() << endl;
+
+    // to access entire map
+    // i:m -->i belongs to map
+    for (auto i : m)
+    {
+        cout << i.first << " " << i.second << endl;
+    }
+
+    // 2 way
+    // using iterator access one by one
+    // traverse unordered map iska iteratr cahaiye naam it map ke begin se shuru krna h
+    // to use order map we remove unodered written before this map
+    unordered_map<string, int>::iterator it = m.begin();
+
+    // jbtk it map ke end tk nhi pahuch jata print data krte rho
+    while (it != m.end())
+    {
+        cout << it->first << " " << it->second << endl;
+        it++; // agle element pe jane ke liye
+    }
+
+    return 0;
+}
